@@ -9,7 +9,7 @@ function setup() {
 
   // creates Slider 0 - 100
   valueSlider = createSlider(0, 100, 0);
-  valueDifferenceSlider = createSlider(10, 100, 10);
+  valueDifferenceSlider = createSlider(100, 1000, 500);
   // position of Slider in bottom center of screen
   valueSlider.position(windowWidth / 2 - 100, windowHeight - 100);
   valueDifferenceSlider.position(windowWidth / 2 - 100, windowHeight - 140);
@@ -23,12 +23,13 @@ function draw() {
   let growSpeed = map(outputGrow, 0, 200, 1, 50);
 
   let differenceValue = valueDifferenceSlider.value();
-  let secondCircle = map(differenceValue, 0, 500, 0, 100);;
-  let thirdCircle = map(differenceValue, 0, 250, 0, 100);
-  let fourthCircle = map(differenceValue, 0, 100, 0, 100);
+  let secondCircle = map(differenceValue, 100, 250, 0, 100);
+  let thirdCircle = map(differenceValue, 200, 500, 0, 100);
+  let fourthCircle = map(differenceValue, 100, 350, 0, 100);
 
   // Mouse for color 
   let mouseMap = map(mouseX, 0, 1600, 0, 255);
+
 
   background(255);
 
@@ -36,7 +37,7 @@ function draw() {
   fill(0, 0, 0);
   textSize(300);
   textAlign(CENTER);
-  text('GROW', windowWidth / 2, windowHeight / 2 + 100);
+  text('GROW', windowWidth / 2 - 85, windowHeight / 2 + 105);
 
   // ellipse 
   fill(mouseMap, 0, 0);
