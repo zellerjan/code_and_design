@@ -2,47 +2,56 @@
 let minSize = 50;
 let maxSize; // depends on screen width
 let circles = [];
-let growing = true;
+let growing = [];
+
+let colors = [
+  [255, 0, 0, 120],     // red
+  [0, 255, 0, 120],     // green
+  [0, 0, 255, 120],     // blue
+  [255, 255, 0, 120]    // yellow
+];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
   // creates slider 0 - 100
-  growthSlider = createSlider(0, 50, 1, 1);
+  growthSlider = createSlider(0, 50, 5, 1);
   chaosSlider = createSlider(0, 50, 0, 1);
 
   // no outlines for circles
   noStroke();
 
-  background(255);
-
+  // set initial circles
   for (let i = 0; i < 4; i++) {
-    // set initial difference
-    let difference = i * 10;
+    let difference = i * 20;
     circles[i] = minSize - difference;
-
+    growing[i] = true;
   }
 }
 
 function draw() {
 
-  background(255);
+  background(255, 200);
   // position of slider in bottom center of screen
   growthSlider.position(windowWidth / 2 - 100, windowHeight - 100);
   chaosSlider.position(windowWidth / 2 - 100, windowHeight - 140);
+
+  // slider names
+  fill(150);
+  textSize(14);
+  textAlign(RIGHT);
+  text('Growth Speed', growthSlider.x - 10, growthSlider.y + 15); 
+  text('Difference (Chaos)', chaosSlider.x - 10, chaosSlider.y + 15);
 
   // set max size of circles
   maxSize = windowWidth + 200;
 
   // map set slider values
-  let speed = map(growthSlider.value(), 0, 50, 1, 10);
+  let speed = map(growthSlider.value(), 0, 50, 1, 50);
   let chaos = map(chaosSlider.value(), 0, 50, 0, 10);
 
-  console.log(chaos);
-
-  // // Mouse for color 
-  // let mouseMap = map(mouseX, 0, 1600, 0, 255);
-
+  console.log('Chaos Value: ' + chaos);
+  console.log('Speed Value: ' + speed);
 
   // create text grow
   fill(0, 0, 0);
@@ -53,33 +62,29 @@ function draw() {
   for (let i = 0; i < 4; i++) {
 
     // different circles get different growth when chaos kicks in
-    let growthRate = speed + (i * chaos);
+    let growthRateWithChaos = speed + (i * chaos);
 
-    // let smallest circle grow the biggest
-    let nr = 3 - i;
-
-    if (growing) {
-      circles[nr] += growthRate;
-    }
+    // Grow or get smaller + Check if MaxSize reached
+    if (growing[i]) {
+      circles[i] += growthRateWithChaos;
+      if (circles[i] >= maxSize) {
+        growing[i] = false;
+      }
+    } 
     else {
-      circles[nr] -= growthRate;
+      circles[i] -= growthRateWithChaos;
+      if (circles[i] <= minSize) {
+        growing[i] = true;
+      }
     }
 
     // create circle
-    fill(50 + i * 50, 255 * i / 4, 255 - i * 50);
+    fill(...colors[i]);
+    
     ellipse(windowWidth / 2, windowHeight / 2, circles[i], circles[i]);
 
-
-    // check if maxSize reached 
-    if (growing && circles[i] >= maxSize) {
-      growing = false;
-    }
-    else if (!growing && circles[i] <= minSize) {
-      growing = true;
-    }
-
-
   }
+
 }
 
 
