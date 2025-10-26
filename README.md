@@ -1,8 +1,8 @@
 # Modul Code & Design, HFIAD25
 Dieses Projekt ist Teil des Moduls Code & Design der Klasse HFIAD25 an der Schule für Gestaltung Zürich, betreut von Hanna Züllig.
 
-[!NOTE]
-Link zur Lerndokumentation: <a href="https://eduzh.sharepoint.com/teams/0011AAD-365-M-CLA-EBI0011-HFIAD24A/_layouts/15/Doc.aspx?sourcedoc=%7B3747b925-ee2a-46b0-a81f-09a61b65b6b7%7D&action=edit&wd=target%28Zeller_Jan%7Ced2feed3-deeb-45b1-a1de-9422679431c6%2F%29&wdorigin=703&wdpartid=%7Be41a9db1-989a-4033-ad36-00ba303ea3e6%7D%7B16%7D&wdsectionfileid=%7B3747b925-ee2a-46b0-a81f-09a61b65b6b7%7D">OneNote SFGZ</a>
+>[!NOTE]
+>Link zur Lerndokumentation: <a href="https://eduzh.sharepoint.com/teams/0011AAD-365-M-CLA-EBI0011-HFIAD24A/_layouts/15/Doc.aspx?sourcedoc=%7B3747b925-ee2a-46b0-a81f-09a61b65b6b7%7D&action=edit&wd=target%28Zeller_Jan%7Ced2feed3-deeb-45b1-a1de-9422679431c6%2F%29&wdorigin=703&wdpartid=%7Be41a9db1-989a-4033-ad36-00ba303ea3e6%7D%7B16%7D&wdsectionfileid=%7B3747b925-ee2a-46b0-a81f-09a61b65b6b7%7D">OneNote SFGZ</a>
 
 
 ## Aufgabe 1 – Slider: Beziehungen steuern
