@@ -3,13 +3,14 @@ let minSize = 50;
 let maxSize; // depends on screen width
 let circles = [];
 let growing = [];
-
 let colors = [
   [255, 0, 0, 120],     // red
   [0, 255, 0, 120],     // green
   [0, 0, 255, 120],     // blue
   [255, 255, 0, 120]    // yellow
 ];
+
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -29,19 +30,15 @@ function setup() {
   }
 }
 
+
+
 function draw() {
 
   background(255, 200);
+
   // position of slider in bottom center of screen
   growthSlider.position(windowWidth / 2 - 100, windowHeight - 100);
   chaosSlider.position(windowWidth / 2 - 100, windowHeight - 140);
-
-  // slider names
-  fill(150);
-  textSize(14);
-  textAlign(RIGHT);
-  text('Growth Speed', growthSlider.x - 10, growthSlider.y + 15); 
-  text('Difference (Chaos)', chaosSlider.x - 10, chaosSlider.y + 15);
 
   // set max size of circles
   maxSize = windowWidth + 200;
@@ -50,8 +47,9 @@ function draw() {
   let speed = map(growthSlider.value(), 0, 50, 1, 50);
   let chaos = map(chaosSlider.value(), 0, 50, 0, 10);
 
-  console.log('Chaos Value: ' + chaos);
-  console.log('Speed Value: ' + speed);
+  // log values of speed and chaos
+  // console.log('Chaos Value: ' + chaos);
+  // console.log('Speed Value: ' + speed);
 
   // create text grow
   fill(0, 0, 0);
@@ -70,7 +68,7 @@ function draw() {
       if (circles[i] >= maxSize) {
         growing[i] = false;
       }
-    } 
+    }
     else {
       circles[i] -= growthRateWithChaos;
       if (circles[i] <= minSize) {
@@ -80,14 +78,19 @@ function draw() {
 
     // create circle
     fill(...colors[i]);
-    
     ellipse(windowWidth / 2, windowHeight / 2, circles[i], circles[i]);
-
   }
+
+  // slider names
+  fill(210);
+  textSize(14);
+  textAlign(RIGHT);
+  text('Growth Speed', growthSlider.x - 10, growthSlider.y + 15);
+  text('Difference (Chaos)', chaosSlider.x - 10, chaosSlider.y + 15);
 
 }
 
-
+// resize window
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
