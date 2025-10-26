@@ -1,0 +1,25 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+  max-width: 100%;
+  max-height: 100vh;
+}
+
+input[type=range] {
+  accent-color: lightgray;
+  color: white;
+	background-color: rgb(210, 210, 210);
+	border: 0px solid black;
+  outline: transparent;
+	border-radius: 15px;
+	cursor: pointer;
+}
+
+input[type=range]:focus {
+  outline: transparent;
+}
