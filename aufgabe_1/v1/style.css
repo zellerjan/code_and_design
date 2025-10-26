@@ -12,12 +12,14 @@ canvas {
 
 input[type=range] {
   accent-color: lightgray;
+  color: white;
 	background-color: rgb(210, 210, 210);
-	border: none;
+	border: 0px solid black;
+  outline: transparent;
 	border-radius: 15px;
 	cursor: pointer;
 }
 
 input[type=range]:focus {
-  outline: none;
+  outline: transparent;
 }
