@@ -20,7 +20,12 @@ Hier drei Screenshots, im Unterordner der Aufgabe habe ich auch noch ein Screenc
 
 
 ## Aufgabe 2 – Animation und Interaktion
-tbc
+Dieses p5.js-Projekt simuliert das bekannte «Red Light – Green Light» Spiel. Rechtecke bewegen sich über den Bildschirm, während der Benutzer als GameMaster entscheidet, wann das Spiel pausiert („Red Light“) oder läuft („Green Light“) und welche Rechtecke eliminiert werden. Die Skizze kombiniert interaktive Steuerung, einfache Physik für die Bewegung der Rechtecke und audiovisuelle Signale, um das Spielerlebnis zu unterstützen.
+
+<img width="1912" height="1241" alt="image" src="https://github.com/user-attachments/assets/1257c75a-2a21-4a7b-a7c5-3a0687ac4b0b" />
+<img width="1912" height="1241" alt="image" src="https://github.com/user-attachments/assets/988ef29b-d849-44c3-b64b-66ccdcddc95f" />
+<img width="1912" height="1241" alt="image" src="https://github.com/user-attachments/assets/a6465c77-caaa-4472-af58-7b91044d8486" />
+
 
 ## Aufgabe 3 – Playful Interaction, Choreografien mit Code 
 tbc
