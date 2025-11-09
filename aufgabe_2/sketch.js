@@ -1,4 +1,4 @@
-// init variables
+// INIT VARIABLES ––––––––––––––––––––––––––––––––––––––––––––
 let numRects = 10;
 let rectW = 50;
 let rectH = 50;
@@ -6,13 +6,13 @@ let rectH = 50;
 let rectX = [];
 let rectY = [];
 let rectSpeed = [];
+let framesLeft = [];
 
 let gameStarted = false;
 let gamePaused = false;
-let framesLeft = [];
 
 
-
+// SETUP ––––––––––––––––––––––––––––––––––––––––––––––––––––
 function setup() {
   createCanvas(windowWidth, windowHeight);
   noStroke();
@@ -26,9 +26,7 @@ function setup() {
   }
 }
 
-
-
-
+// DRAW –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 function draw() {
   background(255);
 
@@ -61,7 +59,6 @@ function draw() {
   }
 
 
-
   // INTRO INFOS
   if (!gameStarted) {
     fill(0);
@@ -89,7 +86,7 @@ function draw() {
   }
   else {
 
-    // WINNER MESSAGE
+    // winner message
     if (numRects === 1) {
       fill(0)
       textSize(48);
@@ -103,7 +100,7 @@ function draw() {
       text('Press "s" to take a screenshot of your winner – Press "r" to start again', width / 2, height / 2);
 
     }
-    // NO WINNER 
+    // no winner message 
     else if (numRects === 0) {
       fill(0)
       textSize(48);
@@ -126,7 +123,7 @@ function draw() {
   }
 }
 
-
+// START GAME ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 function mouseClicked() {
   // Start game on click
   if (!gameStarted) {
@@ -146,6 +143,7 @@ function mouseClicked() {
   }
 }
 
+// KEY INPUTS ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 function keyPressed() {
   // save result as screenshot
   if (key == 's' || key == 'S') {
