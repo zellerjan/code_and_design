@@ -7,6 +7,8 @@ let rectY = [];
 let rectSpeed = [];
 
 let gameStarted = false;
+let gamePaused = false;
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -25,8 +27,15 @@ function draw() {
   background(255);
 
   for (let i = 0; i < numRects; i++) {
-    fill(200, 0, 0);
+    // set color of rect based on red/green light
+    if (gamePaused) {
+      fill(200, 0, 0);
+    }
+    else {
+      fill(0, 200, 0);
+    }
     rect(rectX[i], rectY[i], rectW, rectH);
+
   }
 
   if (!gameStarted) {
@@ -50,11 +59,11 @@ function draw() {
     // display how to play
     textSize(18);
     textStyle(ITALIC);
-    text('Press "SpaceBar" to stop – Eliminate with "click"', width / 2, height / 2 + 100);
+    text('Press "SpaceBar" to stop', width / 2, height / 2 + 100);
 
   }
   else {
-
+    if (!gamePaused) {
     for (let i = 0; i < numRects; i++) {
       rectX[i] += rectSpeed[i];
 
@@ -63,12 +72,13 @@ function draw() {
         rectSpeed[i] *= -1;
       }
     }
+    }
 
     // show how to play on bottom in lightgray
     fill(150);
     textSize(18);
     textStyle(ITALIC);
-    text('Press "SpaceBar" to stop – Eliminate with "click"', width / 2, height - 50);
+    text('Press "SpaceBar" to stop', width / 2, height - 50);
   }
 }
 
@@ -79,7 +89,19 @@ function mouseClicked() {
 }
 
 function keyPressed() {
+  // save result as screenshot
   if (key == 's' || key == 'S') {
     saveCanvas('Jans-Aufgabe-2', 'png');
+  }
+
+  // reload site
+  if (key === 'r' || key === 'R') {
+    window.location.reload();
+  }
+
+  // space bar to pause game
+  if (gameStarted && key == ' ') {
+    gamePaused = !gamePaused;
+
   }
 }
