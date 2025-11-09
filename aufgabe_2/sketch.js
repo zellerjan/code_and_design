@@ -9,6 +9,7 @@ let rectSpeed = [];
 
 let gameStarted = false;
 let gamePaused = false;
+let framesLeft = [];
 
 
 
@@ -21,6 +22,7 @@ function setup() {
     rectX[i] = 10;
     rectY[i] = 100 + i * 80;
     rectSpeed[i] = random(4, 4.5); // set speed randomly
+    framesLeft[i] = 0; // standard: 0 frames
   }
 }
 
@@ -40,7 +42,25 @@ function draw() {
       fill(0, 200, 0);
     }
     rect(rectX[i], rectY[i], rectW, rectH);
+
+
+    // regular movement: if game live or frames left
+    if (gameStarted && (!gamePaused || framesLeft[i] > 0)) {
+      rectX[i] += rectSpeed[i];
+
+      // bounce back
+      if (rectX[i] > width - rectW || rectX[i] < 0) {
+        rectSpeed[i] *= -1;
+      }
+
+      // count down frames left for late stoppers
+      if (framesLeft[i] > 0) {
+        framesLeft[i]--;
+      }
+    }
   }
+
+
 
   // INTRO INFOS
   if (!gameStarted) {
@@ -69,41 +89,57 @@ function draw() {
   }
   else {
 
-    // regular movement of rectangles
-    if (!gamePaused) {
-      for (let i = 0; i < numRects; i++) {
-        rectX[i] += rectSpeed[i];
+    // WINNER MESSAGE
+    if (numRects === 1) {
+      fill(0)
+      textSize(48);
+      textStyle(BOLD);
+      textAlign(CENTER, CENTER);
+      text("You've selected a winner!", width / 2, height / 2 - 50);
 
-        // bounce back on right side
-        if (rectX[i] > width - rectW || rectX[i] < 0) {
-          rectSpeed[i] *= -1;
-        }
-      }
+      // display screenshot + reload option
+      textSize(18);
+      textStyle(ITALIC);
+      text('Press "s" to take a screenshot of your winner – Press "r" to start again', width / 2, height / 2);
+
     }
+    // NO WINNER 
+    else if (numRects === 0) {
+      fill(0)
+      textSize(48);
+      textStyle(BOLD);
+      textAlign(CENTER, CENTER);
+      text("No winner... you've eliminated them all", width / 2, height / 2 - 50);
 
-    // show how to play on bottom in lightgray
-    fill(150);
-    textSize(18);
-    textStyle(ITALIC);
-    text('Press "SpaceBar" to stop – Eliminate with "click"', width / 2, height - 50);
+      // display screenshot + reload option
+      textSize(18);
+      textStyle(ITALIC);
+      text('Press "r" to start again', width / 2, height / 2);
+    }
+    else {
+      // show how to play on bottom in lightgray
+      fill(150);
+      textSize(18);
+      textStyle(ITALIC);
+      text('Press "SpaceBar" to stop – Eliminate with "click"', width / 2, height - 50);
+    }
   }
-
-  // console.log(numRects);
 }
 
-// Start game on click
+
 function mouseClicked() {
+  // Start game on click
   if (!gameStarted) {
     gameStarted = true;
   }
   else {
-    // check if rect got eliminated and reduce numRects
     for (let i = numRects - 1; i >= 0; i--) {
-      if (mouseX > rectX[i] && mouseX < rectX[i] + rectW &&
-        mouseY > rectY[i] && mouseY < rectY[i] + rectH) {
+      // check if mouse is over rect
+      if (mouseX > rectX[i] && mouseX < rectX[i] + rectW && mouseY > rectY[i] && mouseY < rectY[i] + rectH) {
         rectX.splice(i, 1);
         rectY.splice(i, 1);
         rectSpeed.splice(i, 1);
+        framesLeft.splice(i, 1);
         numRects--;
       }
     }
@@ -116,8 +152,21 @@ function keyPressed() {
     saveCanvas('Jans-Aufgabe-2', 'png');
   }
 
+  // reload site
+  if (key === 'r' || key === 'R') {
+    window.location.reload();
+  }
+
   // space bar to pause game
   if (gameStarted && key == ' ') {
     gamePaused = !gamePaused;
+
+    if (gamePaused) {
+      let numContinue = floor(random(0, 4));
+      for (let i = 0; i < numContinue; i++) {
+        let j = floor(random(numRects));
+        framesLeft[j] = floor(random(0, 15));
+      }
+    }
   }
 }
