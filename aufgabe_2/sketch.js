@@ -11,6 +11,15 @@ let framesLeft = [];
 let gameStarted = false;
 let gamePaused = false;
 
+let greenLightSound;
+let redLightSound;
+
+
+// PRELOAD SOUNDS ––––––––––––––––––––––––––––––––––––––––––––––––
+function preload() {
+  greenLightSound = loadSound('assets/greenlight.mp3');
+  redLightSound = loadSound('assets/redlight.mp3');
+}
 
 // SETUP ––––––––––––––––––––––––––––––––––––––––––––––––––––
 function setup() {
@@ -31,10 +40,10 @@ function draw() {
 
   // set color of BG based on red/green light
   if (gamePaused) {
-    background(255, 200, 200);
+    background(255, 150, 150);
   }
   else {
-    background(200, 255, 200);
+    background(150, 255, 150);
   }
 
   // RECT
@@ -86,7 +95,6 @@ function draw() {
 
   }
   else {
-
     // winner message
     if (numRects === 1) {
       fill(0)
@@ -116,7 +124,7 @@ function draw() {
     }
     else {
       // show how to play on bottom in lightgray
-      fill(150);
+      fill(100);
       textSize(18);
       textStyle(ITALIC);
       text('Press "SpaceBar" to stop – Eliminate with "click"', width / 2, height - 50);
@@ -129,6 +137,7 @@ function mouseClicked() {
   // Start game on click
   if (!gameStarted) {
     gameStarted = true;
+    greenLightSound.play();
   }
   else {
     for (let i = numRects - 1; i >= 0; i--) {
@@ -159,6 +168,13 @@ function keyPressed() {
   // space bar to pause game
   if (gameStarted && key == ' ') {
     gamePaused = !gamePaused;
+
+    // play sound 
+    if (gamePaused) {
+      redLightSound.play();
+    } else {
+      greenLightSound.play();
+    }
 
     if (gamePaused) {
       let numContinue = floor(random(0, 4));
