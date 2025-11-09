@@ -28,17 +28,18 @@ function setup() {
 
 // DRAW –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 function draw() {
-  background(255);
 
+  // set color of BG based on red/green light
+  if (gamePaused) {
+    background(255, 200, 200);
+  }
+  else {
+    background(200, 255, 200);
+  }
+
+  // RECT
   for (let i = 0; i < numRects; i++) {
-
-    // set color of rect based on red/green light
-    if (gamePaused) {
-      fill(200, 0, 0);
-    }
-    else {
-      fill(0, 200, 0);
-    }
+    fill(50);
     rect(rectX[i], rectY[i], rectW, rectH);
 
 
