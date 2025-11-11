@@ -14,6 +14,8 @@ Zwei Slider steuern das Verhalten von vier transparenten, farbigen Kreisen:
 Trotz zunehmendem Chaos entstehen durch Überlagerungen und Transparenzen neue harmonische Farbkompositionen – ein visuelles Spiel zwischen Struktur und Unvorhersehbarkeit.
 Hier drei Screenshots, im Unterordner der Aufgabe habe ich auch noch ein Screencast abgelegt.
 
+Link zum Resultat: https://zellerjan.github.io/code_and_design/aufgabe_1/
+
 <img width="1912" height="1237" alt="auf1-v1-screenshot1" src="https://github.com/user-attachments/assets/3e16d065-aa88-4527-b3df-f73185f30c4d" />
 <img width="1912" height="1237" alt="auf1-v1-screenshot2" src="https://github.com/user-attachments/assets/0549bcf5-32c8-4da8-9617-774ce4b2e9f6" />
 <img width="1912" height="1237" alt="auf1-v1-screenshot3" src="https://github.com/user-attachments/assets/9c512e60-97c9-49ed-a5ea-c33bf1cbaa7b" />
@@ -21,6 +23,8 @@ Hier drei Screenshots, im Unterordner der Aufgabe habe ich auch noch ein Screenc
 
 ## Aufgabe 2 – Animation und Interaktion
 Dieses p5.js-Projekt simuliert das bekannte «Red Light – Green Light» Spiel. Rechtecke bewegen sich über den Bildschirm, während der Benutzer als GameMaster entscheidet, wann das Spiel pausiert („Red Light“) oder läuft („Green Light“) und welche Rechtecke eliminiert werden. Die Skizze kombiniert interaktive Steuerung, einfache Physik für die Bewegung der Rechtecke und audiovisuelle Signale, um das Spielerlebnis zu unterstützen.
+
+Link zum Resultat: https://zellerjan.github.io/code_and_design/aufgabe_2
 
 <img width="1912" height="1241" alt="image" src="https://github.com/user-attachments/assets/1257c75a-2a21-4a7b-a7c5-3a0687ac4b0b" />
 <img width="1912" height="1241" alt="image" src="https://github.com/user-attachments/assets/988ef29b-d849-44c3-b64b-66ccdcddc95f" />
