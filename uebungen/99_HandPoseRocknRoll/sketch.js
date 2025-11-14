@@ -91,20 +91,24 @@ function isRocknRoll(hand) {
     return dist(kp.x * ratio, kp.y * ratio, wrist.x * ratio, wrist.y * ratio);
   }
 
-  // Abstände
-  let indexDist = distToWrist(8);   // Zeigefinger
-  let middleDist = distToWrist(12); // Mittelfinger
-  let ringDist = distToWrist(16);   // Ringfinger
-  let pinkyDist = distToWrist(20);  // Kleinfinger
+  // Referenz-Handgröße: Handgelenk bis Mittelfinger-Spitze
+  let handSize = distToWrist(12);
 
-  // console.log(indexDist);
-  // console.log(middleDist);
-    
+  // Normierte Abstände
+  let indexDist = distToWrist(8) / handSize;
+  let middleDist = distToWrist(12) / handSize;
+  let ringDist = distToWrist(16) / handSize;
+  let pinkyDist = distToWrist(20) / handSize;
+
+  console.log(middleDist);
+  console.log(indexDist);
 
   // Faust-Regeln: mittlerer & ringfinger nah, index & pinky weit
-  if (middleDist < 400 && ringDist < 400 && indexDist > 350 && pinkyDist > 350) {
+  // Schwellen jetzt als Verhältnis, z.B. mittlerer/ringfinger < 0.5, index/pinky > 0.8
+  if (middleDist < 2 && ringDist < 2 && indexDist > 2 && pinkyDist > 2) {
     return true;
   }
 
   return false;
 }
+
