@@ -1,7 +1,7 @@
 /**
  * HandPose + Faust/Offene-Hand-Interaktion
  *
- * Kreis auf der Hand wächst oder schrumpft je nach Handöffnung.
+ * Kreis auf der Mittelfinger-Spitze wächst oder schrumpft je nach Handöffnung.
  * Farbe ändert sich bei jedem Öffnen/Schliessen basierend auf Handposition.
  */
 
@@ -13,8 +13,8 @@ let isModelReady = false;
 
 // Kreis
 let circleSize = 20;
-let minSize = 50;    // Mindestgröße jetzt grösser
-let maxSize = 400;   // maximale Größe deutlich grösser
+let minSize = 50;    // Mindestgröße
+let maxSize = 400;   // maximale Größe
 let circleColor;
 let lastStateClosed = null; // für Farbwechsel
 
@@ -53,8 +53,8 @@ function draw() {
     let hand = hands[0];
     let openness = getThumbPinkyDistance(hand);
 
-    // Angepasste Schwellen
-    let closedThreshold = 80;   // Faust erst bei grösserem Abstand
+    // Schwellen
+    let closedThreshold = 80;  
     let openThreshold = 120;
 
     // Zustand Faust/Offene Hand
@@ -70,18 +70,16 @@ function draw() {
 
     // Kreisgröße anpassen
     if (isClosed) {
-      // Faust → schrumpfen/klein bleiben
       circleSize = lerp(circleSize, minSize, 0.2);
     } else if (openness > openThreshold) {
-      // Hand offen → wachsen
-      circleSize += 6;  // schnelleres Wachstum
+      circleSize += 6;
       if (circleSize > maxSize) circleSize = maxSize;
     }
 
-    // Kreis auf Handgelenk zeichnen
-    let wrist = hand.keypoints[0];
-    let cx = wrist.x * ratio;
-    let cy = wrist.y * ratio;
+    // Kreis auf Mittelfinger-Spitze zeichnen (Keypoint 12)
+    let midTip = hand.keypoints[12];
+    let cx = midTip.x * ratio;
+    let cy = midTip.y * ratio;
 
     fill(circleColor);
     noStroke();
