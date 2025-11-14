@@ -86,6 +86,7 @@ function drawHandPoints(hand) {
 function isRocknRoll(hand) {
   let wrist = hand.keypoints[0];
 
+
   function distToWrist(idx) {
     let kp = hand.keypoints[idx];
     return dist(kp.x * ratio, kp.y * ratio, wrist.x * ratio, wrist.y * ratio);
@@ -100,12 +101,13 @@ function isRocknRoll(hand) {
   let ringDist = distToWrist(16) / handSize;
   let pinkyDist = distToWrist(20) / handSize;
 
-  console.log(middleDist);
-  console.log(indexDist);
+  // console.log(middleDist);
+  // console.log(indexDist);
 
   // Faust-Regeln: mittlerer & ringfinger nah, index & pinky weit
   // Schwellen jetzt als Verhältnis, z.B. mittlerer/ringfinger < 0.5, index/pinky > 0.8
   if (middleDist < 2 && ringDist < 2 && indexDist > 2 && pinkyDist > 2) {
+    
     return true;
   }
 
