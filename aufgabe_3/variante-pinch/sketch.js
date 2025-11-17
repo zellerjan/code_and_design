@@ -64,6 +64,12 @@ function draw() {
   });
 
   pop();
+
+   // add text instructions  
+    textSize(24);
+    fill(255, 255, 255, 100);
+    textAlign(CENTER, CENTER);
+    text("Pinch to draw", width / 2, height / 2);
 }
 
 function gotHands(results) {
