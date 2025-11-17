@@ -32,4 +32,8 @@ Link zum Resultat: https://zellerjan.github.io/code_and_design/aufgabe_2
 
 
 ## Aufgabe 3 – Playful Interaction, Choreografien mit Code 
-tbc
+
+## Aufgabe 2 – Animation und Interaktion
+Dieses p5.js-Projekt erkennt das Rock’n’Roll-Handzeichen über die Webcam mithilfe der ml5.js Handpose-Library. Zeigefinger und kleiner Finger werden dabei als ausgestreckt erkannt, während Mittel- und Ringfinger eingeklappt sind. Sobald die Geste erkannt wird, legt das Programm einen halbtransparenten Overlay über das Videobild, der alle paar Millisekunden die Farbe wechselt.
+
+Link zum Resultat: https://zellerjan.github.io/code_and_design/aufgabe_3

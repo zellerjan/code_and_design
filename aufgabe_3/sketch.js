@@ -53,9 +53,17 @@ function draw() {
       noStroke();
       rect(0, 0, width, height);
     }
+
+
   }
 
   pop();
+
+    // add text instructions  
+    textSize(24);
+    fill(255, 255, 255, 100);
+    textAlign(CENTER, CENTER);
+    text("Make a Rock'n Roll Gesture!", width / 2, height / 2);
 }
 
 /**
@@ -107,7 +115,7 @@ function isRocknRoll(hand) {
   // Faust-Regeln: mittlerer & ringfinger nah, index & pinky weit
   // Schwellen jetzt als Verhältnis, z.B. mittlerer/ringfinger < 0.5, index/pinky > 0.8
   if (middleDist < 2 && ringDist < 2 && indexDist > 2 && pinkyDist > 2) {
-    
+
     return true;
   }
 
